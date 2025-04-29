@@ -1,14 +1,15 @@
 package com.example.board.repository;
 
 import com.example.board.model.Board;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
-public class BoardRepositoryImp {
+@Repository
+public class BoardRepositoryImp implements BoardRepository {
 
     //게시글을 저장할 Map 생성
     private final Map<Long, Board> store = new HashMap<>();
@@ -17,9 +18,10 @@ public class BoardRepositoryImp {
     private long sequence = 0L;
 
     //게시글 저장 함수 create 역할 수행
-    public void save(Board board) {
+    public Board save(Board board) {
         board.setId(++sequence); //게시글 id 증가시키고 저장
         store.put(board.getId(), board); //Map에 게시글 저장
+        return board;
     }
 
     //저장된 모든 게시글 조회 기능
