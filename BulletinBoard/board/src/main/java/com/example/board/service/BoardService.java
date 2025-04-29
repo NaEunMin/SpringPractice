@@ -1,47 +1,16 @@
 package com.example.board.service;
 
 import com.example.board.model.Board;
-import com.example.board.repository.BoardRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-//게시글 생성, 조회, 삭제
 @Service
-public class BoardService {
-    private final BoardRepository boardRepository;
-
-    public BoardService(BoardRepository boardRepository) {
-        this.boardRepository = boardRepository;
-    }
-
-    //게시글 생성
-    public Board createBoard(Board board) {
-        return boardRepository.save(board);
-    }
-
-    //게시글 조회
-    public List<Board> getAllBoard(){
-        return boardRepository.findAll();
-    }
-
-    //특정 id 게시글 조회
-    public Board getBoardById(Long id){
-        return boardRepository.findById(id);
-    }
-
-    //특정 id 게시글 수정
-    public void updateBoard(Long id, Board updateBoard){
-        boardRepository.update(id,updateBoard);
-    }
-
-    //특정 id 게시글 삭제
-    public void deleteBoard(Long id){
-        boardRepository.delete(id);
-    }
-
-    //전체 게시글 삭제
-    public void deleteAllBoards(){
-        boardRepository.deleteAll();
-    }
+public interface BoardService {
+    void createBoard(Board board);
+    List<Board> getAllBoards();
+    Board getBoardById(Long id);
+    void updateBoard(Long id, Board updateBoard);
+    void deleteBoard(Long id);
+    void deleteAllBoards();
 }

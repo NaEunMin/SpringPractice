@@ -2,6 +2,7 @@ package com.example.board.controller;
 
 import com.example.board.model.Board;
 import com.example.board.service.BoardService;
+import com.example.board.service.BoardServiceImp;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
