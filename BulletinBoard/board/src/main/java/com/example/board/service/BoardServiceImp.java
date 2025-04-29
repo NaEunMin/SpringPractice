@@ -8,7 +8,7 @@ import java.util.List;
 
 //게시글 생성, 조회, 삭제
 @Service
-public class BoardServiceImp {
+public class BoardServiceImp implements BoardService {
     private final BoardRepository boardRepository;
 
     public BoardServiceImp(BoardRepository boardRepository) {
