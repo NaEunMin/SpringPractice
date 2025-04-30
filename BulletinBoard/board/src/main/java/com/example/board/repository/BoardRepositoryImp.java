@@ -1,13 +1,14 @@
 package com.example.board.repository;
 
 import com.example.board.model.Board;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@Repository
 public class BoardRepositoryImp implements BoardRepository {
 
     //게시글을 저장할 Map 생성
