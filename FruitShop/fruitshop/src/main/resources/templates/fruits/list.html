@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>과일 목록</title>
+</head>
+<body>
+<h1>🍎 과일 목록</h1>
+
+<a href="/fruits/add">+ 과일 추가하기</a>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>이름</th>
+        <th>수량</th>
+        <th>상세보기</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="fruit : ${fruits}">
+        <td th:text="${fruit.id}">1</td>
+        <td th:text="${fruit.name}">사과</td>
+        <td th:text="${fruit.quantity}">10</td>
+        <td><a th:href="@{/fruits/{id}(id=${fruit.id})}">보기</a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
