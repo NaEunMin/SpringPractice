@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Repository
+
 public class BoardRepositoryImp implements BoardRepository {
 
     //게시글을 저장할 Map 생성
@@ -30,12 +30,12 @@ public class BoardRepositoryImp implements BoardRepository {
     }
 
     //특정 id 게시글 조회
-    public Board findById(Long id) {
+    public Board findById(long id) {
         return store.get(id); //키가 id인 board 리턴.
     }
 
     //특정 id 게시글 수정
-    public void update(Long id, Board updateBoard){
+    public void update(long id, Board updateBoard){
         Board board = store.get(id); //특정 id의 게시글을 가져옴.
         if(board != null){
             board.setTitle(updateBoard.getTitle()); //업데이트할 board의 제목으로 바꿈
@@ -44,7 +44,7 @@ public class BoardRepositoryImp implements BoardRepository {
     }
 
     //특정 id 게시글 삭제
-    public void delete(Long id){
+    public void delete(long id){
         store.remove(id); //Map에서 id를 가진 board 삭제
     }
 
