@@ -40,6 +40,10 @@ public class SecurityConfig {
         // 접근 경로별 인가 설정
         http
                 .authorizeHttpRequests(auth -> auth
+                        //회원가입은 모두가 접근해도 된다.
+                        .requestMatchers("/user/join").permitAll()
+                        //회원가입을 진행한 사용자만 접근가능
+                        .requestMatchers("/user/update/**").hasRole("USER")
                         .requestMatchers("/**").permitAll());
 
         //로그인 방식 설정 Form 로그인 방식
