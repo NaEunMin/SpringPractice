@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>과일 추가</title>
+</head>
+<body>
+<h1>🍊 과일 추가하기</h1>
+
+<form action="/fruits/add" method="post">
+    <div>
+        <label>과일 이름: </label>
+        <input type="text" name="name" required>
+    </div>
+    <div>
+        <label>수량: </label>
+        <input type="number" name="quantity" required>
+    </div>
+    <div>
+        <button type="submit">추가하기</button>
+    </div>
+</form>
+
+<a href="/fruits">← 과일 목록으로</a>
+
+</body>
+</html>

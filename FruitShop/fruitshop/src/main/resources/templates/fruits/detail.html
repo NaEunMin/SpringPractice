@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>과일 상세</title>
+</head>
+<body>
+<h1>🍋 과일 상세 보기</h1>
+
+<p>과일 ID: <span th:text="${fruit.id}"></span></p>
+<p>과일 이름: <span th:text="${fruit.name}"></span></p>
+<p>재고 수량: <span th:text="${fruit.quantity}"></span></p>
+
+<!-- 삭제 버튼 -->
+<form th:action="@{/fruits/{id}/delete(id=${fruit.id})}" method="post">
+    <button type="submit">삭제하기</button>
+</form>
+
+<a href="/fruits">← 과일 목록으로</a>
+
+</body>
+</html>
