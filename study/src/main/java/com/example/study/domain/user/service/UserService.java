@@ -6,6 +6,7 @@ import com.example.study.domain.user.entity.UserEntity;
 import com.example.study.domain.user.entity.UserRoleType;
 import com.example.study.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -110,5 +111,28 @@ public class UserService implements UserDetailsService {
     @Transactional
     public void deleteUser(String username) {
         userRepository.deleteByUsername(username);
+    }
+
+    //유저 접근 권한 체크
+    //매개 변수 username은 다른사람 유저네임
+    public Boolean isAccess(String username){
+
+        //현재 로그인되어 있는 유저의 username
+        String sessionUsername = SecurityContextHolder.getContext().getAuthentication().getName();
+        //현재 로그인외더 있는 유저의 role
+        String sessionRole = SecurityContextHolder.getContext().getAuthentication().getAuthorities().iterator().next().getAuthority();
+
+        //수직적으로 admin이면 무조건 접근 가능
+        if("ROLE_ADMIN".equals(sessionRole)){
+            return true;
+        }
+
+        //수평적으로 특정 행위를 수행할 username에 대해 sessionName과 같은지 검증
+        if(username.equals(sessionUsername)){
+            return true;
+        }
+
+        //나머지 다 불가
+        return false;
     }
 }
