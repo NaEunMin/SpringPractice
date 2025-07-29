@@ -44,7 +44,9 @@ public class SecurityConfig {
                         .requestMatchers("/user/join").permitAll()
                         //회원가입을 진행한 사용자만 접근가능
                         .requestMatchers("/user/update/**").hasRole("USER")
+                        .requestMatchers("/board/**").hasRole("USER")
                         .requestMatchers("/**").permitAll());
+
 
         //로그인 방식 설정 Form 로그인 방식
         http
